@@ -18,6 +18,7 @@ we cloned 0.2.0 tag, but vendor tarball has 0.1.3 in it's name, and we are chang
 ```shell
 git clone https://github.com/pocketblue/extra-rpms /tmp/extra-rpms
 cd /tmp/extra-rpms/regreet
+spectool -g -R regreet.spec
 rpmbuild -bs regreet.spec
 ```
 
