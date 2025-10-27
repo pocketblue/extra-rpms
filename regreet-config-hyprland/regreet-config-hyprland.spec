@@ -1,5 +1,5 @@
 Name:           regreet-config-hyprland
-Version:        1
+Version:        2
 Release:        0%{?dist}
 Summary:        regreet config for hyprland
 License:        GPL-3.0-or-later
@@ -12,12 +12,16 @@ Requires:       regreet hyprland
 %{summary}
 
 %install
-install -Dpm0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/greetd/config.toml
+install -Dpm0644 %{SOURCE1} %{buildroot}%{_datadir}/regreet-config-hyprland/config.toml
 install -Dpm0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/greetd/regreet-config-hyprland.conf
 
+%post
+install -Dpm0644 %{_datadir}/regreet-config-hyprland/config.toml %{_sysconfdir}/greetd/config.toml
+
 %files
+%dir %{_datadir}/regreet-config-hyprland
 %dir %{_sysconfdir}/greetd
-%config(noreplace) %{_sysconfdir}/greetd/config.toml
+%{_datadir}/regreet-config-hyprland/config.toml
 %config(noreplace) %{_sysconfdir}/greetd/regreet-config-hyprland.conf
 
 %changelog
